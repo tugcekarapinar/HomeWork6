@@ -27,6 +27,32 @@ public class Main {
                 break;
             }
         }
+        System.out.print("Aranan Kelimeler = ");
         System.out.println(arananKelimeler);
+        System.out.print("Oluşturulan Yeni Kelime = ");
+        System.out.println(CreateRandomString(arananKelimeler.get(0), arananKelimeler.get(1)));
+    }
+
+    public static String CreateRandomString(String str1, String str2) {
+        String newString = "";
+        List<Character> benzersizHarfListesi = new ArrayList<>();
+        char[] harfDizisi1 = str1.toCharArray();
+        char[] harfDizisi2 = str2.toCharArray();
+        for (char harf:harfDizisi1){
+            boolean benzerlik = benzersizHarfListesi.contains(harf);
+            if (!benzerlik){
+                benzersizHarfListesi.add(harf);
+            }
+        }
+        for (int i = 0; i < harfDizisi2.length; i++) {
+            boolean benzerlik = benzersizHarfListesi.contains(harfDizisi2 [i]);
+            if (!benzerlik){
+                benzersizHarfListesi.add(harfDizisi2 [i]);
+            }
+        }
+        for (char harf: benzersizHarfListesi){
+            newString += harf;
+        }
+        return newString;
     }
 }
